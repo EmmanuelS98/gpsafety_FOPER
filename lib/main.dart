@@ -55,8 +55,10 @@ class MyApp extends StatelessWidget {
           'infoDisp'    :(BuildContext context )=> InfoDispositivo(), 
         },
         theme: ThemeData(
-          primaryColor: Color.fromRGBO(72, 172, 77,1),
+          primaryColor: Colors.greenAccent[400],
+          
         ),
+        
       ),
     );
   }

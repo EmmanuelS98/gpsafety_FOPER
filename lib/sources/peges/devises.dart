@@ -26,8 +26,8 @@ class _DevisesState extends State<Devises> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dispositivos') ,
-        leading: Icon(Icons.adb_rounded),
+        title: Text('Dispositivos',style: TextStyle(color: Colors.grey)  ,) ,
+        leading: Icon(Icons.adb_rounded,color: Colors.grey[350],),
       ),
       body: Center(
         child: DelayedList()  
@@ -216,7 +216,7 @@ class _CrearListadoState extends State<CrearListado> {
               ),
               tileColor: Color.fromRGBO(198, 195, 190,.2),
               onTap: (){
-                Navigator.pushNamed(context, 'nuevoDisp', arguments: dispo);
+                Navigator.pushNamed(context, 'infoDisp', arguments: dispo);
               } ,
               )
 
