@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:gpsafety2/sources/blocks/provider.dart';
 import 'package:gpsafety2/sources/models/dispositivosModel.dart';
 import 'package:gpsafety2/sources/peges/homePage.dart';
+import 'package:gpsafety2/sources/utils/alerta.dart';
+import 'package:gpsafety2/sources/utils/alertaEliminar.dart';
 
 class InfoDispositivo extends StatefulWidget {
   @override
@@ -15,7 +17,7 @@ class _InfoDispositivoState extends State<InfoDispositivo> {
   
   DispositivoModel dispositivo = new DispositivoModel();
   File foto= null;
-
+  
 
   @override
   Widget build(BuildContext context) {
@@ -189,6 +191,9 @@ class _InfoDispositivoState extends State<InfoDispositivo> {
   }
   Widget opciones(){
     final size = MediaQuery.of(context).size;
+    final dispositivosBloc = Provider.dispositivosBloc(context);
+    
+
 
     return Container(
       width: (size.width * 0.45) - 20  ,
@@ -228,12 +233,38 @@ class _InfoDispositivoState extends State<InfoDispositivo> {
             ],
           ) ,
           Padding(
-            padding: const EdgeInsets.fromLTRB(90,290,0,10),
+            //padding: const EdgeInsets.fromLTRB(90,290,0,10),
+            padding: const EdgeInsets.fromLTRB(0,0,0,0),
             child: TextButton(
-                  onPressed: ()=>_borrarDispo(context),
+                  onPressed: (){
+                    showDialog(
+                      context: context,
+                      builder: ( context ){
+                          return AlertDialog(
+                            title: Text('Cuidado!!!'),
+                            content: Text('Seguro que quieres eliminar este dispositivo?'),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed:(){Navigator.of(context).pop();} ,
+                                child: Text('cancelar', style: TextStyle(color: Colors.red),),
+                                autofocus: true,
+                              ),
+                              TextButton(
+                                onPressed:(){ 
+                                  dispositivosBloc.borrarDispositivo(dispositivo.id);
+                                  Navigator.pushNamed(context, 'principal');
+                                 },
+                                child: Text('aceptar')
+                              ),
+                            ],
+                          );
+                        }
+                      );
+                  },
                   child: Container(
                     height: 70,
                     width: 70,
+                    color: Colors.black,
                     child: Icon(Icons.delete,size: 40, color: Colors.red[700]),
                   ),
                 ),
@@ -242,9 +273,4 @@ class _InfoDispositivoState extends State<InfoDispositivo> {
       ),
     );
   }
-
-  void _borrarDispo(BuildContext context){
-    
-  }
-
 }

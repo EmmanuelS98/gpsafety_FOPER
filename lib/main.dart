@@ -11,13 +11,6 @@ import 'package:gpsafety2/sources/peges/registro.dart';
 import 'package:gpsafety2/sources/peges/userProfile.dart';
 import 'package:gpsafety2/sources/user_preferences/preferencias_usuario.dart';
 
-/* import 'package:gpsafety/src/peges/homePage.dart';
-import 'package:gpsafety/src/peges/homePageScreen.dart';
-import 'package:gpsafety/src/peges/login.dart';
-import 'package:gpsafety/src/peges/newDevise2.dart';
-import 'package:gpsafety/src/peges/registro.dart';
-import 'package:gpsafety/src/peges/userProfile.dart';
-*/
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();  
@@ -55,11 +48,13 @@ class MyApp extends StatelessWidget {
           'infoDisp'    :(BuildContext context )=> InfoDispositivo(), 
         },
         theme: ThemeData(
-          primaryColor: Colors.greenAccent[400],
-          
+          //brightness: Brightness.dark,
+          primaryColor: Colors.red,
+          //accentColor: Colors.cyan[600],
         ),
         
       ),
+
     );
   }
 }

@@ -118,7 +118,7 @@ class LoginPage extends StatelessWidget {
            ),
           ),
 
-          FlatButton(
+          TextButton(
             onPressed: ()=>Navigator.pushReplacementNamed(context, 'registro'),
              child:Text('Regístrate') ,),
           SizedBox(height: 100.0,)
@@ -141,7 +141,7 @@ class LoginPage extends StatelessWidget {
               hintText: "ejemplo@correo.com",
               labelText: "Correo electrònico",  
               //counterText: snapshot.data,
-              errorText: snapshot.error
+              errorText: snapshot.error,
             ),
             onChanged: bloc.changeEmail,//cada que escribe el usuario el stream guarda los nuevos argumentos
           ),
