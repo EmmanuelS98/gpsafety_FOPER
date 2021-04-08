@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 List<Widget> getIcon(){
 
   double _size =25;
-  Color _color = Colors.white54;
+  Color _color = Colors.white70;
 
   return <Widget>[
     Icon(

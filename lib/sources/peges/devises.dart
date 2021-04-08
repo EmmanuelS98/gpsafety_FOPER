@@ -25,9 +25,18 @@ class _DevisesState extends State<Devises> {
     dispositivosBloc.cargarDispositivos(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Dispositivos',style: TextStyle(color: Colors.grey)  ,) ,
-        leading: Icon(Icons.adb_rounded,color: Colors.grey[350],),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(75),
+        child: AppBar(
+          title: Padding(
+            padding: const EdgeInsets.only(top: 35.0),
+            child: Text('Dispositivos',style: TextStyle(color: Colors.white,fontSize: 22)),
+          ) ,
+          leading: Padding(
+            padding: const EdgeInsets.only(top: 20.0,left: 17),
+            child: Icon(Icons.adb_rounded,color: Colors.white,size: 35,),
+          ),
+        ),
       ),
       body: Center(
         child: DelayedList()  
@@ -51,7 +60,7 @@ class _DevisesState extends State<Devises> {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(50.0),
         child: Container(
-          color: Color.fromRGBO(224, 136, 75, 1),
+          //color: Color.fromRGBO(224, 136, 75, 1),
           height: 85.0,
           width: 85.0,
           child: FloatingActionButton(
@@ -59,7 +68,7 @@ class _DevisesState extends State<Devises> {
               Navigator.pushNamed(context, 'nuevoDisp');
             },
             child: Icon(Icons.add, color: Colors.white, size: 30.0,),
-            backgroundColor: Color.fromRGBO(235, 109, 34, 1),
+            backgroundColor: Color.fromRGBO(23, 66, 118, 1),
           ),
         ),
       ), 
@@ -203,22 +212,35 @@ class _CrearListadoState extends State<CrearListado> {
     return Container(
          
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(8,16,8,0),
-          child: 
-              ListTile(
-              title: Text('${dispo.nombre}'),
-              subtitle: Text(estado),
-              trailing: FadeInImage(
-                image: NetworkImage(dispo.fotoUrl),
-                placeholder: AssetImage('assets/jar-loading.gif'),
-                height: 60,
-                width: 60,
+          padding: const EdgeInsets.fromLTRB(8,30,8,0),
+          child:Stack(
+            alignment: Alignment.centerRight,
+            children: [ListTile(
+                title: Text('${dispo.nombre}',style: TextStyle(fontSize: 18),),
+                subtitle: Text(estado), 
+                leading: Container(
+                  width: 8,
+                  height:65 ,
+                  color: Color.fromRGBO(23, 66, 118,1),
+                ),
+                tileColor: Color.fromRGBO(198, 195, 190,.2),
+                onTap: (){
+                  Navigator.pushNamed(context, 'infoDisp', arguments: dispo);
+                } ,
               ),
-              tileColor: Color.fromRGBO(198, 195, 190,.2),
-              onTap: (){
-                Navigator.pushNamed(context, 'infoDisp', arguments: dispo);
-              } ,
-              )
+              Padding(
+                padding: const EdgeInsets.only(bottom:2,right: 13),
+                child: Container(
+                  height: 80,
+                  width: 80,
+                  child: new CircleAvatar(
+                    backgroundImage: NetworkImage(dispo.fotoUrl),
+                    //radius: 0,
+                  )
+                ),
+              ), 
+            ], 
+          )
 
                 
                 
@@ -227,6 +249,7 @@ class _CrearListadoState extends State<CrearListado> {
         ),
       );  
   }
+ 
 }
 
 class ActivityListTile extends StatelessWidget{

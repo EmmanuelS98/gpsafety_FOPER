@@ -48,8 +48,8 @@ class MyApp extends StatelessWidget {
           'infoDisp'    :(BuildContext context )=> InfoDispositivo(), 
         },
         theme: ThemeData(
-          //brightness: Brightness.dark,
-          primaryColor: Colors.red,
+          brightness: Brightness.light,
+          primaryColor:  Color.fromRGBO(1, 16, 29, 1),
           //accentColor: Colors.cyan[600],
         ),
         

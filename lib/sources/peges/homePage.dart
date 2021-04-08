@@ -35,9 +35,9 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: CurvedNavigationBar(
         index: _page,
         items: getIcon(),
-        color: Color.fromRGBO(72, 172, 77,1),
+        color: Color.fromRGBO(1, 16, 29,1),
         backgroundColor: Colors.transparent,
-        buttonBackgroundColor: Colors.green,
+        buttonBackgroundColor: Color.fromRGBO(57, 62, 70,1),
         height: 50,
         animationDuration: Duration(milliseconds: 200),
         animationCurve: Curves.bounceInOut,

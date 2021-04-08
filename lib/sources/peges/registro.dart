@@ -34,8 +34,8 @@ class Registro extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: <Color>[
-            Color.fromRGBO(75, 175, 79, 1.0),//75, 175, 79
-            Color.fromRGBO(140, 194, 73, 1.0),//140, 194, 73
+            Color.fromRGBO(12, 105, 139, 1.0),//75, 175, 79
+            Color.fromRGBO(34, 40, 49, 1.0),//140, 194, 73
           ]
          ),
       ),
@@ -53,15 +53,13 @@ class Registro extends StatelessWidget {
     return Stack(
       children: <Widget>[
         fondo,
-        Positioned(child: crearCirculos, top: 150.0, left: -30.0),
-        Positioned(child: crearCirculos, top: -80.0, right: -60.0),
         Container(
           padding: EdgeInsets.only(top: 100.0),
           child: Column(
             children: <Widget>[
               Icon(Icons.person_pin_circle,color: Colors.white, size: 100.0,),
               SizedBox(height: 5.0,width: double.infinity),
-              Text("GPSafety", style: TextStyle(color: Colors.white,fontSize: 15),)
+              Text("GPSafety", style: TextStyle(color: Colors.white,fontSize: 20),)
             ],
           ),
         )
@@ -103,7 +101,7 @@ class Registro extends StatelessWidget {
            ),
            child: Column(
              children: <Widget>[
-              Text("Registrate Ya!", style: TextStyle(fontSize: 20.0),),
+              Text("Registrate Ya!", style: TextStyle(fontSize: 26.0,color: Color.fromRGBO(12, 105, 139, 1)),),
               SizedBox(height: 50.0),
               _crearEmail(bloc),
               SizedBox(height: 30.0),
@@ -114,8 +112,8 @@ class Registro extends StatelessWidget {
            ),
           ),
 
-          FlatButton(
-            child:Text('Ya tienes cuenta? Login') ,
+          TextButton(
+            child:Text('Ya tienes cuenta? Login', style: TextStyle(color: Color.fromRGBO(12, 105, 139, 1)),) ,
             onPressed: ()=>Navigator.pushReplacementNamed(context, 'login'),
           ),
           SizedBox(height: 100.0,)
@@ -134,7 +132,7 @@ class Registro extends StatelessWidget {
           child: TextField(
             keyboardType: TextInputType.emailAddress,  
             decoration: InputDecoration(
-              icon: Icon(Icons.alternate_email,color: Colors.green,),
+              icon: Icon(Icons.alternate_email,color:Color.fromRGBO(12, 105, 139, 1),),
               hintText: "ejemplo@correo.com",
               labelText: "Correo electrònico",  
               //counterText: snapshot.data,
@@ -159,7 +157,7 @@ class Registro extends StatelessWidget {
             obscureText: true,
             keyboardType: TextInputType.text,  
             decoration: InputDecoration(
-              icon: Icon(Icons.lock_outline,color: Colors.green,),
+              icon: Icon(Icons.lock_outline,color: Color.fromRGBO(12, 105, 139, 1)),
               labelText: "Contraseña",
               //counterText: snapshot.data,
               errorText: snapshot.error,
@@ -179,14 +177,14 @@ class Registro extends StatelessWidget {
       builder: (BuildContext context, AsyncSnapshot snapshot){
         return RaisedButton(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+            padding: EdgeInsets.symmetric(horizontal: 65.0, vertical: 15.0),
             child: Text("Registrarse"),
           ),
           shape: RoundedRectangleBorder(
             borderRadius:BorderRadius.circular(5.0)
           ),
           elevation: 0.0 ,
-          color: Colors.green,
+          color: Color.fromRGBO(12, 105, 139, 1),
           textColor: Colors.white,
           onPressed: snapshot.hasData ? ()=>_registrer( context , bloc) : null
         );

@@ -54,7 +54,7 @@ class _NewDeviseState extends State<NewDevise> {
         ),
         elevation: 10.0,
         title: Padding(
-          padding: const EdgeInsets.only(left: 130.0),
+          padding: const EdgeInsets.only(left: 0.0),
           child: Text(
             'Nuevo Dispositivo',
           ),
@@ -122,9 +122,8 @@ class _NewDeviseState extends State<NewDevise> {
               )
             ],
             overflow: Overflow.visible,
-          ));
-
-    
+          )
+      );
     }
   }
 
@@ -146,16 +145,6 @@ class _NewDeviseState extends State<NewDevise> {
           radius: 200,
       ));
     }
-    
-    
-
-    /* Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(40.0) ),
-      child: Image(
-        image: AssetImage(_imageFile?.path??'assets/no-image.png'),
-        height: 200.0,
-      ),
-    ); */
   }
 
   Widget _botonFotoPerfil() {
@@ -167,7 +156,7 @@ class _NewDeviseState extends State<NewDevise> {
         },
         child: Icon(
           Icons.camera_alt,
-          color: Colors.grey[300],
+          color: Colors.grey[350],
           size: 30,
         ),
         color: Colors.transparent,
@@ -180,38 +169,8 @@ class _NewDeviseState extends State<NewDevise> {
         focusElevation: 0,
         highlightElevation: 0,
       ),
-      backgroundColor: Colors.orange[600],
+      backgroundColor: Color.fromRGBO(27, 38, 44, 1)
     );
-
-    /* return Padding(
-      padding: const EdgeInsets.only(top: 20),
-      child: Container(
-
-        height: 60,
-        width: 180,
-        decoration: BoxDecoration(
-
-        ),
-        
-        child: RaisedButton(
-          
-          onPressed: (){
-            _openGallery();
-          },
-          elevation: 5.0, 
-          child: Text('Seleccionar Foto de Dispositivo', 
-            textAlign: TextAlign.center,
-
-            style: TextStyle(
-              fontSize: 15 ,
-              color: Color.fromRGBO(255, 255, 255, 1),
-            ),
-          ),
-          color: Color.fromRGBO(224, 136, 75, 1),
-
-        ),
-      ),
-    ); */
   }
 
   Widget _exitApp(BuildContext context) {
@@ -335,7 +294,7 @@ class _NewDeviseState extends State<NewDevise> {
         child: RaisedButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0)),
-            color: Color.fromRGBO(224, 136, 75, 1),
+            color: Color.fromRGBO(27, 38, 44, 1),
             textColor: Colors.grey[300],
             elevation: 5.0,
             onPressed: () async{
@@ -373,7 +332,7 @@ class _NewDeviseState extends State<NewDevise> {
         child: RaisedButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0)),
-            color: Color.fromRGBO(224, 136, 75, 1),
+            color: Color.fromRGBO(0, 173, 181, 1),
             textColor: Colors.grey[300],
             elevation: 5.0,
             onPressed: (_guardado) ? null : _cambioPagina,
