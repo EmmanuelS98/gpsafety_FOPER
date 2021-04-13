@@ -156,7 +156,7 @@ class _NewDeviseState extends State<NewDevise> {
         },
         child: Icon(
           Icons.camera_alt,
-          color: Colors.grey[350],
+          color: Colors.white,
           size: 30,
         ),
         color: Colors.transparent,
@@ -169,7 +169,7 @@ class _NewDeviseState extends State<NewDevise> {
         focusElevation: 0,
         highlightElevation: 0,
       ),
-      backgroundColor: Color.fromRGBO(27, 38, 44, 1)
+      backgroundColor: Color.fromRGBO(23, 66, 118, 1)
     );
   }
 
@@ -234,26 +234,6 @@ class _NewDeviseState extends State<NewDevise> {
         },
       ),
     );
-    
-    /* return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 80, 20, 5),
-      child: TextFormField(
-        initialValue: dispositivo.nombre,
-        textCapitalization: TextCapitalization.sentences,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-          labelText: 'Nombre del Dispositivo:',
-        ),
-        onSaved: (value) => dispositivo.nombre = value,
-        validator: (value) {
-          if (value.length < 3) {
-            return "Ingrese un nombre con formato correcto";
-          } else {
-            return null;
-          }
-        },
-      ),
-    ); */
   }
 
   Widget _idDispo() {
@@ -294,8 +274,8 @@ class _NewDeviseState extends State<NewDevise> {
         child: RaisedButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0)),
-            color: Color.fromRGBO(27, 38, 44, 1),
-            textColor: Colors.grey[300],
+            color: Color.fromRGBO(23, 66, 118, 1),
+            textColor: Colors.white,
             elevation: 5.0,
             onPressed: () async{
               id = await FlutterBarcodeScanner.scanBarcode(
@@ -312,7 +292,7 @@ class _NewDeviseState extends State<NewDevise> {
     );
   }
 
-  /* Este metodo es por si gustas agregar algun Switch pa ponerlo como prendido o apagado;) 
+  //Este metodo es por si gustas agregar algun Switch pa ponerlo como prendido o apagado;) 
   Widget _crearActivo(){
    return SwitchListTile(
       value: dispositivo.activo,
@@ -321,7 +301,7 @@ class _NewDeviseState extends State<NewDevise> {
         dispositivo.activo = value;
       }),
     ); 
-  } */
+  } 
 
   Widget _crearBoton(BuildContext context) {
     return Padding(
@@ -332,8 +312,8 @@ class _NewDeviseState extends State<NewDevise> {
         child: RaisedButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0)),
-            color: Color.fromRGBO(0, 173, 181, 1),
-            textColor: Colors.grey[300],
+            color: Color.fromRGBO(23, 66, 118, 1),
+            textColor: Colors.white,
             elevation: 5.0,
             onPressed: (_guardado) ? null : _cambioPagina,
             child: Text(

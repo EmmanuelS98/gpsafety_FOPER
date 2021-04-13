@@ -83,7 +83,8 @@ class _InfoDispositivoState extends State<InfoDispositivo> {
       height: 230,
       width: 230,
       child: new CircleAvatar(
-        backgroundImage: NetworkImage(dispositivo.fotoUrl),
+
+        backgroundImage: NetworkImage(dispositivo.fotoUrl,),
         radius: 200,
       )
     );
@@ -197,7 +198,7 @@ class _InfoDispositivoState extends State<InfoDispositivo> {
 
     return Container(
       width: (size.width * 0.45) - 20  ,
-      height: size.height * 0.37,
+      height: size.height * 0.40,
       child: Stack(
         alignment: AlignmentDirectional.center,
         children:[
@@ -210,10 +211,10 @@ class _InfoDispositivoState extends State<InfoDispositivo> {
                 child: Container(
                   height: 70,
                   width: 70,
-                  child: Icon(Icons.remove_red_eye,size: 45,),
+                  child: Icon(Icons.remove_red_eye,size: 45, color: Colors.white,),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(70.0),
-                    color: Colors.blueGrey,),
+                    color: Color.fromRGBO(23, 66, 118, 1)),
                 )
               ),
               TextButton(
@@ -223,18 +224,19 @@ class _InfoDispositivoState extends State<InfoDispositivo> {
                 child: Container(
                   height: 70,
                   width: 70,
-                  child: Icon(Icons.edit,size: 45,),
+                  child: Icon(Icons.edit,size: 45,color: Colors.white,),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(70.0),
-                    color: Colors.blueGrey,),
+                    color: Color.fromRGBO(23, 66, 118, 1),
+                  ),
                 )
               ),
               
             ],
           ) ,
           Padding(
-            //padding: const EdgeInsets.fromLTRB(90,290,0,10),
-            padding: const EdgeInsets.fromLTRB(0,0,0,0),
+            padding: const EdgeInsets.fromLTRB(90,260,0,10),
+            //padding: const EdgeInsets.fromLTRB(0,0,0,0),
             child: TextButton(
                   onPressed: (){
                     showDialog(
@@ -245,17 +247,18 @@ class _InfoDispositivoState extends State<InfoDispositivo> {
                             content: Text('Seguro que quieres eliminar este dispositivo?'),
                             actions: <Widget>[
                               TextButton(
-                                onPressed:(){Navigator.of(context).pop();} ,
-                                child: Text('cancelar', style: TextStyle(color: Colors.red),),
-                                autofocus: true,
-                              ),
-                              TextButton(
                                 onPressed:(){ 
                                   dispositivosBloc.borrarDispositivo(dispositivo.id);
-                                  Navigator.pushNamed(context, 'principal');
+                                  Navigator.pushNamed(context, 'principal',);
                                  },
-                                child: Text('aceptar')
+                                child: Text('aceptar' , style: TextStyle(color: Color.fromRGBO(23, 66, 118, 1)),)
                               ),
+                              TextButton(
+                                onPressed:(){Navigator.of(context).pop();} ,
+                                child: Text('cancelar', style: TextStyle(color: Color.fromRGBO(23, 66, 118, 1)),),
+                                autofocus: true,
+                              ),
+                              
                             ],
                           );
                         }
@@ -264,7 +267,7 @@ class _InfoDispositivoState extends State<InfoDispositivo> {
                   child: Container(
                     height: 70,
                     width: 70,
-                    color: Colors.black,
+                    
                     child: Icon(Icons.delete,size: 40, color: Colors.red[700]),
                   ),
                 ),

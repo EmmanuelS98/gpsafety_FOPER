@@ -235,7 +235,7 @@ class _CrearListadoState extends State<CrearListado> {
                   width: 80,
                   child: new CircleAvatar(
                     backgroundImage: NetworkImage(dispo.fotoUrl),
-                    //radius: 0,
+                    //radius: 70,
                   )
                 ),
               ), 
