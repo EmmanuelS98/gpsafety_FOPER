@@ -1,6 +1,7 @@
+import 'dart:async';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:gpsafety2/sources/blocks/provider.dart';
 import 'package:gpsafety2/sources/models/dispositivosModel.dart';
@@ -179,14 +180,31 @@ class _InfoDispositivoState extends State<InfoDispositivo> {
   }
   Widget _mapa(){
     final size = MediaQuery.of(context).size;
+    
+    Completer<GoogleMapController> _controller = Completer();
+
+    final CameraPosition _kGooglePlex = CameraPosition(
+      target: LatLng(20.704063, -100.443811),
+      zoom: 16,
+    );
+
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 20, 0, 10),
       child: Container(
-        
         height: size.height *  0.37,
         width:  size.width  *  0.55,
-        color: Colors.blueGrey,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        child: GoogleMap(
+          mapType: MapType.normal,
+          initialCameraPosition:_kGooglePlex,
+          onMapCreated: (GoogleMapController controller) {
+            _controller.complete(controller);
+          },
+          scrollGesturesEnabled: true,
+        ) ,
       ),
     );
   }
@@ -211,7 +229,7 @@ class _InfoDispositivoState extends State<InfoDispositivo> {
                 child: Container(
                   height: 70,
                   width: 70,
-                  child: Icon(Icons.remove_red_eye,size: 45, color: Colors.white,),
+                  child: Icon(Icons.remove_red_eye,size: 30, color: Colors.white,),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(70.0),
                     color: Color.fromRGBO(23, 66, 118, 1)),
@@ -224,7 +242,7 @@ class _InfoDispositivoState extends State<InfoDispositivo> {
                 child: Container(
                   height: 70,
                   width: 70,
-                  child: Icon(Icons.edit,size: 45,color: Colors.white,),
+                  child: Icon(Icons.edit,size: 30,color: Colors.white,),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(70.0),
                     color: Color.fromRGBO(23, 66, 118, 1),

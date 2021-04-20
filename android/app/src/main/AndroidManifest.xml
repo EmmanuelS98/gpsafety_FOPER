@@ -3,6 +3,9 @@
    <application
         android:label="gpsafety2"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCYFoYkgL58j09HvSRVmvmJ_qGSgJvLNLM"/>
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
