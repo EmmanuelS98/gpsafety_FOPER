@@ -34,7 +34,7 @@ class _DevisesState extends State<Devises> {
           ) ,
           leading: Padding(
             padding: const EdgeInsets.only(top: 20.0,left: 17),
-            child: Icon(Icons.adb_rounded,color: Colors.white,size: 35,),
+            child: Icon(Icons.person_pin_circle_sharp,color: Colors.white,size: 35,),
           ),
         ),
       ),

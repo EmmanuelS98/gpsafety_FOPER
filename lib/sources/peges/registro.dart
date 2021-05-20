@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 //import 'package:gpsafety/src/blocks/login_bloc.dart';
 
 import 'package:gpsafety2/sources/blocks/provider.dart';
+import 'package:gpsafety2/sources/models/userModel.dart';
 import 'package:gpsafety2/sources/providers/usuario_provider.dart';
 import 'package:gpsafety2/sources/utils/alerta.dart';
 
@@ -70,6 +71,8 @@ class Registro extends StatelessWidget {
   Widget _loginForm(BuildContext context) {
 
     final bloc = Provider.of(context);//aqui se obtienen los datos de los form de login
+    UserModel user = new UserModel();
+
     final size = MediaQuery.of(context).size;
 
     
@@ -103,6 +106,8 @@ class Registro extends StatelessWidget {
              children: <Widget>[
               Text("Registrate Ya!", style: TextStyle(fontSize: 26.0,color: Color.fromRGBO(12, 105, 139, 1)),),
               SizedBox(height: 50.0),
+              _crearNombre(bloc),
+              SizedBox(height: 30.0),
               _crearEmail(bloc),
               SizedBox(height: 30.0),
               _crearPasword(bloc),
@@ -121,6 +126,30 @@ class Registro extends StatelessWidget {
       ),
     );
   }
+
+  Widget _crearNombre( LoginBloc bloc) {
+    
+    return StreamBuilder(
+      stream: bloc.nombreStream ,
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          child: TextField(
+            keyboardType: TextInputType.name,  
+            decoration: InputDecoration(
+              icon: Icon(Icons.person_rounded,color:Color.fromRGBO(12, 105, 139, 1),),
+              hintText: "fulanito de tal",
+              labelText: "Nombre",  
+              //counterText: snapshot.data,
+              errorText: snapshot.error
+            ),
+            onChanged: bloc.changeNombre,//cada que escribe el usuario el stream guarda los nuevos argumentos
+          ),
+        );  
+      },
+    );
+  }
+
 
   Widget _crearEmail( LoginBloc bloc) {
     
@@ -194,7 +223,15 @@ class Registro extends StatelessWidget {
 
   _registrer(BuildContext context ,LoginBloc bloc) async{
     
-    final info = await usuarioProvider.nuevoUsuario(bloc.email, bloc.password);
+    UserModel user = new UserModel();
+
+    user.mail =bloc.email;
+    user.password = bloc.password;
+    user.nombre = bloc.nombre;
+
+
+
+    final info = await usuarioProvider.nuevoUsuario(user);
     if(info['ok']){
       Navigator.pushReplacementNamed (context, 'login');
     }else{

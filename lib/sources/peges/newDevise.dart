@@ -31,7 +31,8 @@ class _NewDeviseState extends State<NewDevise> {
 
   File foto= null;
   bool _picked = false;
-  String id = '';
+  String id ='';
+  TextEditingController qrId = TextEditingController();
   
 
   @override
@@ -224,7 +225,7 @@ class _NewDeviseState extends State<NewDevise> {
            labelText: 'Nombre Dispositivo',
            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
         ),
-        onSaved: (value) => dispositivo.nombre  = value ,
+        onSaved: (value) => dispositivo.nombre  = value,
         validator: (value){
           if(value.length < 2){
             return 'ingrese nombre correcto';
@@ -244,16 +245,26 @@ class _NewDeviseState extends State<NewDevise> {
   }
 
   Widget _idTexto() {
+    
+    print('EEEEEEEEEEEEEEEEEEEEEEEEEE' + id);
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 30, 90, 5),
       child: TextFormField(
-        initialValue: dispositivo.id,
+        controller: qrId,
+        //initialValue: id,
         textCapitalization: TextCapitalization.sentences,
         decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
           labelText: 'Serial del Dispositivo:',
         ),
-        onSaved: (value) => dispositivo.id = value,
+        onSaved: (value) {
+          if(id == '' ){
+            dispositivo.id = value;
+          }else{
+            dispositivo.id = id;
+          }      
+        },
         validator: (value) {
           if (value.length < 3) {
             return "Ingrese un nombre correcto";
@@ -278,14 +289,18 @@ class _NewDeviseState extends State<NewDevise> {
             textColor: Colors.white,
             elevation: 5.0,
             onPressed: () async{
-              id = await FlutterBarcodeScanner.scanBarcode(
+              qrId.text = await FlutterBarcodeScanner.scanBarcode(
                                                     '#ff6666', 
                                                     'Cancel',
                                                     false, 
                                                     ScanMode.QR);
+              setState(() {
+                _idTexto( );  
+              });
 
               //FlutterBarcodeScanner.getBarcodeStreamReceiver("#ff6666", "Cancel", false, ScanMode.QR);
-              print(id);
+              
+              
             },
             child: Icon(Icons.qr_code_sharp)),
       ),

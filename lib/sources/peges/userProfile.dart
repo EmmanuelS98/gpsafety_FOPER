@@ -48,26 +48,32 @@ class _UserProfileState extends State<UserProfile> {
           ) ,
           leading: Padding(
             padding: const EdgeInsets.only(top: 20.0, left: 17),
-            child: Icon(Icons.adb_rounded,color: Colors.white,size: 35,),
+            child: Icon(Icons.person_pin_circle_sharp,color: Colors.white,size: 35,),
           ),
         ),
       ),
 
-      body: Column(
-        //mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          //Datos de usuario (Foto, nombre, correo)
-          _datosUsuario(size),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Divider( height: 25,),
-          ),
-          //Boton cerrar sesion
-          _botonCerrarSesion(),
-          //
-          
-        ],
+      body: Center(
+
+        child: Column(
+          //mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            //Datos de usuario (Foto, nombre, correo)
+            Padding(
+              padding: const EdgeInsets.only(top: 100),
+              child: _datosUsuario(size),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(120.0),
+              child: Divider( height: 25,),
+            ),
+            //Boton cerrar sesion
+            _botonCerrarSesion(),
+            //
+            
+          ],
+        ),
       ),
     );
   }
@@ -214,7 +220,7 @@ class _UserProfileState extends State<UserProfile> {
                 'Usuario',
                 style: TextStyle(fontSize: 13,color: Colors.black ),
               ),
-              subtitle: Text('Alguien Alguien',style: TextStyle(color: Colors.black87,fontSize: 18),),
+              subtitle: Text('José Aguirre Hernandez',style: TextStyle(color: Colors.black87,fontSize: 18),),
               contentPadding: EdgeInsets.fromLTRB(5, 0, 0, 3),          
             ),
             
@@ -224,7 +230,7 @@ class _UserProfileState extends State<UserProfile> {
                 'Correo',
                 style: TextStyle(fontSize: 13,color: Colors.black ),
               ),
-              subtitle: Text('alguien@alguien.com',style: TextStyle(color: Colors.black87,fontSize: 18),),
+              subtitle: Text('josE@gmail.com',style: TextStyle(color: Colors.black87,fontSize: 18),),
               contentPadding: EdgeInsets.fromLTRB(5, 0, 0, 0),            
             ),
           ],

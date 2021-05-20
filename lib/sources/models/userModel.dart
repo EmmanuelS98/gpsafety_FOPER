@@ -10,14 +10,17 @@ class UserModel {
     String mail;
     String password;
     String fotoUrl;
+    String dispositivos;
+
 
    
     UserModel({
         this.id = '',
-        this.nombre ='',
-        this.mail = '',
+        this.nombre ='predeterminado',
+        this.mail = 'predeterminado',
         this.password = '',
-        this.fotoUrl,
+        this.fotoUrl='predeterminado',
+        this.dispositivos='',
     });
 
     
@@ -27,14 +30,16 @@ class UserModel {
         nombre    : json["nombre"],
         mail      : json["activo"],
         password  : json["password"],
-        fotoUrl   : json["fotoUrl"] 
+        fotoUrl   : json["fotoUrl"] ,
+        dispositivos   : json["dispositivos"] 
     );
 
     Map<String, dynamic> toJson() => {
         "id"      : id,
         "nombre"  : nombre,
-        "activo"  : mail,
+        "email"  : mail,
         "password"  : password,
         "fotoUrl" : fotoUrl,
+        "dispositivos" : dispositivos,
     };
 }

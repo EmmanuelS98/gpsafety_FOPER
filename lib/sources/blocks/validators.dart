@@ -14,6 +14,16 @@ class Validators{
     }
   );
 
+  final validarNombre = StreamTransformer<String, String>.fromHandlers(
+    handleData: (nombre, sink){
+      if( nombre.length >= 3 ){
+        sink.add(nombre);
+      }
+      else{
+        sink.addError('Formato no Valido');
+      }
+    }
+  );
 
   final validarEmail = StreamTransformer<String, String>.fromHandlers(
     handleData: (email, sink){

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:gpsafety2/sources/models/dispositivosModel.dart';
 import 'package:gpsafety2/sources/user_preferences/preferencias_usuario.dart';
@@ -11,8 +12,21 @@ class DispositivosProvider{
   final String _url = 'https://foperuaq2021-default-rtdb.firebaseio.com';
   final _prefs = new PreferenciasUsuario();
 
+  Future<String> inputData() async {
+    final FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    final String uid = user.uid.toString();
+    return uid;
+  }
+
+
   Future <bool> crearDispo( DispositivoModel dispositivo  )async{
 
+    var user = inputData();
+
+    print(user);
+    
+    
+//    final url = '$_url/usuarios/$dispo/dispositivos.json?auth=${_prefs.token}';
     final url = '$_url/dispositivos.json?auth=${_prefs.token}';
     final resp = await http.post(url, body: dispositivoModelToJson(dispositivo));
     final decodedData = json.decode(resp.body);

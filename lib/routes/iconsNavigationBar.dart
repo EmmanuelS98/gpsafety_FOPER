@@ -17,7 +17,7 @@ List<Widget> getIcon(){
       color: _color,
     ),
     Icon(
-      Icons.help_outline,
+      Icons.info_outline_rounded,
       size: _size,
       color: _color,
     ),
